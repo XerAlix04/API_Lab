@@ -1,0 +1,4 @@
+﻿  BaiTH2.cpp
+C:\Users\LAPTOP-PC\projects\API\BaiTH2\BaiTH2.cpp(157,29): warning C4312: 'type cast': conversion from 'int' to 'HMENU' of greater size
+C:\Users\LAPTOP-PC\projects\API\BaiTH2\BaiTH2.cpp(158,29): warning C4312: 'type cast': conversion from 'int' to 'HMENU' of greater size
+  BaiTH2.vcxproj -> C:\Users\LAPTOP-PC\projects\API\BaiTH2\x64\Debug\BaiTH2.exe

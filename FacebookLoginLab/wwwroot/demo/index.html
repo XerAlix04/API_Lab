@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title></title>
+</head>
+<body>
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '1783202425587910',
+                cookie: true,                     // Enable cookies to allow the server to access the session.
+                xfbml: true,                     // Parse social plugins on this webpage.
+                version: 'v22.0'                // Use this Graph API version for this call.
+            });
+
+
+            FB.getLoginStatus(function (response) {   // Called after the JS SDK has been initialized.
+                statusChangeCallback(response);        // Returns the login status.
+            });
+        };
+
+        function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+            if (response.status === 'connected') {
+                console.log('Logged in and authenticated');
+                setElements(true);
+                fetchAPI();
+            } else {
+                console.log('Not authenticated')
+                setElements(false);
+            }
+        }
+
+
+        function checkLoginState() {               // Called when a person is finished with the Login Button.
+            FB.getLoginStatus(function (response) {   // See the onlogin handler
+                statusChangeCallback(response);
+            });
+        }
+
+        function fetchAPI() {
+            FB.api('/me', 'GET', { "fields": "id, name, email, birthday, location, picture" }, function (response) {
+                if (response && !response.error) {
+                    console.log(response);
+                    buildProfile(response);
+                }
+                FB.api('/me/feed', 'GET', { "fields": "message,picture,created_time" }, function (response) {
+                    if (response && !response.error) {
+                        buildFeed(response);
+                    }
+                });
+            });
+        }
+
+        function buildProfile(user) {
+            let locationName = user.location && user.location.name ? user.location.name : 'Location not available';
+            let birthday = user.birthday ? user.birthday : 'Birthday not available';
+            let email = user.email ? user.email : 'Email not available';
+            let profile = `
+                              <h3>${user.name}</h3>
+                              <ul class="list-group">
+                                <li class="list-group-item"><img src="${user.picture.data.url}"></li>
+                                <li class="list-group-item">User ID: ${user.id}</li>
+                                <li class="list-group-item">Email: ${email}</li>
+                                <li class="list-group-item">Birthday: ${birthday}</li>
+                                <li class="list-group-item">Address: ${locationName}</li>
+
+                              </ul>
+                            `;
+            document.getElementById('profile').innerHTML = profile;
+        }
+
+        function buildFeed(feed) {
+            let output = '<h3>Bài viết gần đây</h3>';
+            for (let i in feed.data) {
+                if (feed.data[i].message) {
+                    console.log('picture', feed.data[i].picture);
+                    let pictureUrl = "";
+                    if (feed.data[i].picture) {
+                        pictureUrl = feed.data[i].picture;
+                    }
+                    output += `
+                                            <div class="well">
+                                              ${feed.data[i].message}
+                                              <span>Time: ${feed.data[i].created_time}</span>
+                                              ${pictureUrl ? `<img src="${pictureUrl}">` : ''}
+                                            </div>`;
+                }
+                else {
+                    console.log('picture', feed.data[i].picture);
+                    let pictureUrl = "";
+                    if (feed.data[i].picture) {
+                        pictureUrl = feed.data[i].picture;
+                    }
+                    output += `
+                        <div class="well">
+                          <span>Time: ${feed.data[i].created_time}</span>
+                          ${pictureUrl ? `<img src="${pictureUrl}">` : ''}
+                        </div>`;
+                }
+            }
+
+            document.getElementById('feed').innerHTML = output;
+        }
+
+        function setElements(isLoggedIn) {
+            if (isLoggedIn) {
+                document.getElementById('logout').style.display = 'block';
+                document.getElementById('profile').style.display = 'block';
+                document.getElementById('feed').style.display = 'block';
+                document.getElementById('fb-btn').style.display = 'none';
+                document.getElementById('title').style.display = 'none';
+            } else {
+                document.getElementById('logout').style.display = 'none';
+                document.getElementById('profile').style.display = 'none';
+                document.getElementById('feed').style.display = 'none';
+                document.getElementById('fb-btn').style.display = 'block';
+                document.getElementById('title').style.display = 'block';
+            }
+        }
+
+        function logout() {
+            FB.logout(function (response) {
+                setElements(false);
+            });
+        }
+
+        
+
+        function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+            console.log('Welcome!  Fetching your information.... ');
+            FB.api('/me', function (response) {
+                console.log('Successful login for: ' + response.name);
+                document.getElementById('status').innerHTML =
+                    'Thanks for logging in, ' + response.name + '!';
+            });
+        }
+
+    </script>
+    
+    <div id="fb-root"></div>
+    <div class="container">
+        <div class="login-container">
+            <h1 id="title">Đăng nhập vào để xem hồ sơ của bạn</h1>
+            <nav class="navbar navbar-default">
+                <div class="container">
+                    <div class="collapse navbar-collapse">
+                        <ul>
+                            <li><a id="logout" href="#" onclick="logout()">Logout</a></li>
+                            <div id="fb-btn" class="fb-login-button" data-width="" data-size="large"
+                                 data-button-type="login_with" data-layout="default" data-auto-logout-link="false"
+                                 data-use-continue-as="false" onlogin="checkLoginState()"
+                                 scope="public_profile,email,user_birthday,user_location,user_posts">
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div>
+            <div id="profile"></div>
+            <div id="feed"></div>
+        </div>
+    </div>
+
+
+    <!-- Load the JS SDK asynchronously -->
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+</body>
+</html>

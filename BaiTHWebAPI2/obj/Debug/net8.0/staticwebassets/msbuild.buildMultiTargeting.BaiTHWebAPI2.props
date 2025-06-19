@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\BaiTHWebAPI2.props" />
+</Project>

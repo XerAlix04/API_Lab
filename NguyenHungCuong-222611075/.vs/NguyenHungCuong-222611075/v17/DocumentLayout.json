@@ -1,0 +1,69 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\LAPTOP-PC\\projects\\API\\NguyenHungCuong-222611075\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CCF72EA4-2EE4-4B18-87A2-CF27AB82A468}|NguyenHungCuong-222611075.vcxproj|C:\\Users\\LAPTOP-PC\\projects\\API\\NguyenHungCuong-222611075\\NguyenHungCuong-222611075.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CCF72EA4-2EE4-4B18-87A2-CF27AB82A468}|NguyenHungCuong-222611075.vcxproj|solutionrelative:NguyenHungCuong-222611075.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CCF72EA4-2EE4-4B18-87A2-CF27AB82A468}|NguyenHungCuong-222611075.vcxproj|C:\\Users\\LAPTOP-PC\\projects\\API\\NguyenHungCuong-222611075\\NguyenHungCuong-222611075.rc||{177559E0-D141-11D0-92DF-00A0C9138C45}|,   b e g i n       $ \u00A1 )$  \u0022     ",
+      "RelativeMoniker": "D:0:0:{CCF72EA4-2EE4-4B18-87A2-CF27AB82A468}|NguyenHungCuong-222611075.vcxproj|solutionrelative:NguyenHungCuong-222611075.rc||{177559E0-D141-11D0-92DF-00A0C9138C45}|,   b e g i n       $ \u00A1 )$  \u0022     "
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CCF72EA4-2EE4-4B18-87A2-CF27AB82A468}|NguyenHungCuong-222611075.vcxproj|C:\\Users\\LAPTOP-PC\\projects\\API\\NguyenHungCuong-222611075\\NguyenHungCuong-222611075.rc||{177559E0-D141-11D0-92DF-00A0C9138C45}|,   b e g i n       $ \u00A2 )$  \u0022     ",
+      "RelativeMoniker": "D:0:0:{CCF72EA4-2EE4-4B18-87A2-CF27AB82A468}|NguyenHungCuong-222611075.vcxproj|solutionrelative:NguyenHungCuong-222611075.rc||{177559E0-D141-11D0-92DF-00A0C9138C45}|,   b e g i n       $ \u00A2 )$  \u0022     "
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "NguyenHungCuong-222611075.rc - IDR_MENU2 [English (United States)] - Menu",
+              "DocumentMoniker": "C:\\Users\\LAPTOP-PC\\projects\\API\\NguyenHungCuong-222611075\\NguyenHungCuong-222611075.rc",
+              "RelativeDocumentMoniker": "NguyenHungCuong-222611075.rc",
+              "ToolTip": "C:\\Users\\LAPTOP-PC\\projects\\API\\NguyenHungCuong-222611075\\NguyenHungCuong-222611075.rc - IDR_MENU2 [English (United States)] - Menu",
+              "RelativeToolTip": "NguyenHungCuong-222611075.rc - IDR_MENU2 [English (United States)] - Menu",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2025-04-02T00:34:14.829Z",
+              "EditorCaption": " - IDR_MENU2 [English (United States)] - Menu"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "NguyenHungCuong-222611075.rc - IDR_MENU1 [English (United States)] - Menu",
+              "DocumentMoniker": "C:\\Users\\LAPTOP-PC\\projects\\API\\NguyenHungCuong-222611075\\NguyenHungCuong-222611075.rc",
+              "RelativeDocumentMoniker": "NguyenHungCuong-222611075.rc",
+              "ToolTip": "C:\\Users\\LAPTOP-PC\\projects\\API\\NguyenHungCuong-222611075\\NguyenHungCuong-222611075.rc - IDR_MENU1 [English (United States)] - Menu",
+              "RelativeToolTip": "NguyenHungCuong-222611075.rc - IDR_MENU1 [English (United States)] - Menu",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2025-04-02T00:34:13.294Z",
+              "EditorCaption": " - IDR_MENU1 [English (United States)] - Menu"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "NguyenHungCuong-222611075.cpp",
+              "DocumentMoniker": "C:\\Users\\LAPTOP-PC\\projects\\API\\NguyenHungCuong-222611075\\NguyenHungCuong-222611075.cpp",
+              "RelativeDocumentMoniker": "NguyenHungCuong-222611075.cpp",
+              "ToolTip": "C:\\Users\\LAPTOP-PC\\projects\\API\\NguyenHungCuong-222611075\\NguyenHungCuong-222611075.cpp",
+              "RelativeToolTip": "NguyenHungCuong-222611075.cpp",
+              "ViewState": "AgIAAJ8AAAAAAAAAAAAAALYAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-02-12T14:34:24.861Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

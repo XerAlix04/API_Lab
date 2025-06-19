@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenStreetMap với Leaflet</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <!-- Thêm Locate Control plugin -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js"></script>
+
+    <!-- Thêm Fullscreen Control plugin -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.6.0/Control.FullScreen.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.6.0/Control.FullScreen.min.js"></script>
+
+    <!-- Thêm Routing Machine plugin -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+
+    <!-- Thêm FontAwesome (tại sao lại cần cái này bruh?)-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+    <style>
+        #map {
+            height: 700px;
+            overflow: visible !important; /* Override the hidden overflow */
+        }
+        /* Override pointer-events for bottom controls */
+        .leaflet-bottom {
+            pointer-events: auto !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+
+    <script>
+        // Initialize map
+        var lat = 21.0278, lon = 105.8342; // Default coordinates for Hanoi
+        var map = L.map('map').setView([lat, lon], 13);
+        // Add tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+
+        // add fullscreen control
+        L.control.fullscreen({
+            position: 'topleft',
+            title: 'Xem toàn màn hình',
+            titleCancel: 'Thoát toàn màn hình',
+            content: '<i class="fa fa-expand"></i>'
+        }).addTo(map);
+
+        // add location control
+        var locateControl = L.control.locate({
+            position: 'bottomright',
+            strings: {
+                title: "Hiển thị vị trí của tôi",
+                popup: "Bạn đang ở đây"
+            },
+            locateOptions: {
+                enableHighAccuracy: true,
+                maxZoom: 18
+            }
+        }).addTo(map);
+
+        // Listen for the 'locationfound' event
+        map.on('locationfound', function (e) {
+            // 'e' contains the location data (latitude, longitude, accuracy, etc.)
+            // The locate control usually adds a marker internally.
+            // We can try to open the popup of that marker.
+            if (locateControl._marker) { // Check if the marker exists
+                locateControl._marker.openPopup();
+            }
+        });
+
+        // Add marker when click on map
+        var marker;
+        function onMapClick(e) {
+            marker = L.marker(e.latlng, {
+                draggable: true
+            }).addTo(map)
+                .bindPopup("Vị trí: " + e.latlng.toString())
+                .openPopup();
+        }
+
+        function onMapRightClick(e) {
+            // show direction to clicked point
+            if (marker) {
+                var from = marker.getLatLng();
+                var to = e.latlng;
+                L.Routing.control({
+                    waypoints: [
+                        L.latLng(from.lat, from.lng),
+                        L.latLng(to.lat, to.lng)
+                    ]
+                }).addTo(map);
+            }
+        }
+
+        map.on('click', onMapClick);
+        map.on('contextmenu', onMapRightClick);
+    </script>
+</body>
+
+</html>
